@@ -22,7 +22,7 @@ struct PSallocator {
     }
 
     void deallocate(T* p, std::size_t) noexcept {
-        std::free(p);
+        free(p);
     }
 };
 
@@ -36,7 +36,7 @@ void setup() {
     log_i("PSRAM detected. Allocating vector...");
 
     std::vector<int, PSallocator<int>> v;
-    v.reserve(900000); // Allocates in PSRAM
+    v.reserve(700000); // Allocates in PSRAM
     log_i("Vector capacity in PSRAM: %d", v.capacity());
 
     v.clear();           // Clears the vector
